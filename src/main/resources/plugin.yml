@@ -1,0 +1,23 @@
+name: AdminTP
+version: '1.0'
+description: "Let administrators teleport to a user's homes and locations."
+
+author: EasyMFnE
+website: https://github.com/EasyMFnE/AdminTP
+
+database: false
+main: net.easymfne.admintp.AdminTP
+load: POSTWORLD
+softdepend: [Essentials, Factions]
+
+commands:
+  admintp:
+    aliases: [atp]
+    description: AdminTP command
+    permission: admintp.use
+    permission-message: 'Unknown command. Type "/help" for help.'
+
+permissions:
+  admintp.use:
+    default: op
+    description: Allows access to AdminTP
