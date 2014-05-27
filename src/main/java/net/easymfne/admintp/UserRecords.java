@@ -118,9 +118,9 @@ public class UserRecords {
         }
         try {
             if (plugin.getConfig().contains(
-                    player.getUniqueId() + type.getNode())) {
+                    getPlayerIdentifier(player) + type.getNode())) {
                 return deserializeLocation(plugin.getConfig().getString(
-                        player.getUniqueId() + type.getNode()));
+                        getPlayerIdentifier(player) + type.getNode()));
             }
         } catch (InvalidLocationException e) {
             plugin.fancyLog(Level.WARNING,
@@ -189,8 +189,17 @@ public class UserRecords {
     private void setSavedLocation(OfflinePlayer player, LocationType type,
             Location location) {
         if (type.isSaved()) {
-            plugin.getConfig().set(player.getUniqueId() + type.getNode(),
+            plugin.getConfig().set(getPlayerIdentifier(player) + type.getNode(),
                     serializeLocation(location));
+        }
+    }
+    
+    private String getPlayerIdentifier(OfflinePlayer player) {
+        if (plugin.getConfig().getBoolean("uuid-mode", false)) {
+            return player.getUniqueId().toString();
+        }
+        else {
+            return player.getName().toLowerCase();
         }
     }
     

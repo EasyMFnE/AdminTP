@@ -1,2 +1,5 @@
+[2014-05-26] v1.1
+    Added backwards compatibility for non-UUID versions.
+
 [2014-05-05] v1.0
     Initial public release.
